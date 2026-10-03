@@ -1,0 +1,13 @@
+# JMeter
+*.jtl
+jmeter.log
+jmeter/results/*.csv
+jmeter/reports/
+
+# K6
+k6/results/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/

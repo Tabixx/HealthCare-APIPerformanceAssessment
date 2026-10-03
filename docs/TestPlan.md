@@ -30,6 +30,11 @@ I am a performance tester at a company that integrates healthcare systems. Our t
 -   Gradual increase: 20 > 50 > 100 > 200 VUs, with each level maintained for \~30-45s
 -   Monitor at which level the error rate and response times exceed the success criteria
 
+*Note: During execution, this was extended to 500 VUs after 200 VUs showed no 
+degradation, and a second variant mixed in `/delay` and `/status/500` requests 
+to test for resource exhaustion under combined load and failure conditions - 
+see the technical report for full results.*
+
 ### 4. Failure / Resilience Test
 **Goal:** Verify how the system behaves when the vendor experiences an outage during data import.
 -   Mix of requests to `/status/500`, `/status/503`, and `/delay/5` under moderate load (e.g. 20 VUs)
@@ -49,5 +54,5 @@ The API passes the load test (5 req/s, 2 min) with an error rate \< 0.1% and p95
 If the API starts returning errors or slows down significantly already at the expected peak (load test), the recommendation is **"do not sign without renegotiating the SLA with the vendor."**
 
 ## Tools
-- K6 - load test, stress test (thresholds, CI-friendly)
-- JMeter - baseline, failure/resilience test (easier visual inspection of individual responses using View Results Tree)
+- K6 - used for all four scenarios (baseline, load, stress, failure/resilience). Chosen for scripted consistency and built-in pass/fail thresholds across the full cycle as well as personal preference. A detailed K6 vs JMeter comparison was already done in my previous project (see PerfoTesting-Playground), so this one focuses on the testing cycle and reporting rather than tool comparison (as I planned initially).
+- Docker — local httpbin instance, to allow unrestricted stress testing without impacting a shared public service
