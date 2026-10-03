@@ -59,7 +59,7 @@ interpretation in the reports below; raw output saved as JSON in `k6/results/`.
 
 ## Reports
 
-- [Technical Report](reports/technical-report.md) — full metrics, 
+- [Technical Report](reports/technical-report.md) - full metrics, 
   observations, limitations
-- [Executive Summary](reports/executive-summary.md) — plain-language version 
+- [Executive Summary](reports/executive-summary.md) - plain-language version 
   for a non-technical audience
